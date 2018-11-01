@@ -13,27 +13,33 @@
 		<h:panelGrid columns="3">
  #{msgs.name}
  <h:inputText id="name" label="#{msgs.name}" value="#{user.name}"
-				required="true">
+				required="true"
+				validatorMessage="Name includes only characters or white sapces">
 				<f:validateRegex pattern="^[a-zA-Z]+[\-'\s]?[a-zA-Z ]+$" />
 			</h:inputText>
 			<h:message for="name" style="color:red" />
 
  #{msgs.birthday}
  <h:inputText id="birthday" label="#{msgs.expirationDate}"
-				value="#{user.birthday}" required="true">
+				value="#{user.birthday}" required="true"
+				validatorMessage="Expiration date (Date-Month-Year).Example: 01-11-2018">
 				<f:convertDateTime pattern="dd-MM-yyyy" />
 			</h:inputText>
 			<h:message for="birthday" style="color:red" />
  #{msgs.phonenumber}
  <h:inputText id="phonenumber" label="#{msgs.phonenumber}"
-				value="#{user.phonenumber}" required="true">
-				<f:convertNumber integerOnly="true" type="number" />
+				value="#{user.phonenumber}" required="true"
+				validatorMessage="Phone number includes only digit and length is 10">
+				<!--  <f:convertNumber integerOnly="true" type="number" />
 				<f:validateLength maximum="10" minimum="10" />
+				-->
+				<f:validateRegex pattern="^[0-9]{10}$" />
 			</h:inputText>
 			<h:message for="phonenumber" style="color:red" />
 #{msgs.email}
  <h:inputText id="email" label="#{msgs.email}" value="#{user.email}"
-				required="true">
+				required="true"
+				validatorMessage="Wrong email format. Exmaple buingoctuyen1001@gmail.com">
 				<f:validateRegex
 					pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
 			</h:inputText>
